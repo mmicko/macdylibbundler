@@ -223,7 +223,7 @@ void adhocCodeSign(const std::string& file)
     if( Settings::canCodesign() == false ) return;
 
     // Add ad-hoc signature for ARM (Apple Silicon) binaries
-    std::string signCommand = std::string("codesign --force --deep --preserve-metadata=entitlements,requirements,flags,runtime --sign - \"") + file + "\"";
+    std::string signCommand = std::string("rcodesign --sign \"") + file + "\"";
     if( systemp( signCommand ) != 0 )
     {
         // If the codesigning fails, it may be a bug in Apple's codesign utility.
